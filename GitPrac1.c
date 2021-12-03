@@ -14,5 +14,9 @@ int main()
         arr[ar[i]]++;
     for(int j=60;j<100;j++)
         if(arr[j]!=0) printf("%C = %d\t",j,arr[j]);
+        printf("Life is beautiful");
+        printf("Life is beautiful");
+        printf("Life is beautiful");
+        printf("Praise be to Allah");
     return 0;
 }
