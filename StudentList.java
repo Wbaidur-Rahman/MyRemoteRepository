@@ -12,17 +12,17 @@ public class StudentList {
 		try{
 			s = new BufferedReader(
 						new InputStreamReader(
-							new FileInputStream("students.txt"))); 
+							new FileInputStream(Constants.s3))); 
 		} catch (Exception e){}
 
 
 		if (args.length == 0) {
-			System.out.println("No Arguments.");
+			System.out.println(Constants.s4);
 		}
 			
 		else if(args[0].equals("a")) {
 
-			System.out.println("Loading data ...");	
+			System.out.println(Constants.s1);	
 		
 			try {
 			String students = s.readLine();
@@ -30,12 +30,12 @@ public class StudentList {
 			for(String  studentsName : student) { System.out.println(studentsName); }
 			} catch (Exception e){}
  
-			System.out.println("Data Loaded.");
+			System.out.println(Constants.s2);
 		}
                 
 		else if(args[0].equals("r")) {
 
-			System.out.println("Loading data ...");
+			System.out.println(Constants.s1);
 			
 			try {
 			String students = s.readLine();
@@ -46,12 +46,12 @@ public class StudentList {
 			System.out.println(student[index]);
 			} catch (Exception e){} 
                         
-			System.out.println("Data Loaded.");			
+			System.out.println(Constants.s2);			
 		}
                 
 		else if(args[0].contains("+")){
 
-			System.out.println("Loading data ...");	
+			System.out.println(Constants.s1);	
 		
 			try {
 			BufferedWriter bwr = new BufferedWriter(
@@ -59,7 +59,7 @@ public class StudentList {
 
 			String t = args[0].substring(1);
 	        	Date d = new Date();
-	        	String df = "dd/mm/yyyy-hh:mm:ss a";
+	        	String df = Constants.s5;
 	        	DateFormat dateFormat = new SimpleDateFormat(df);
 	        	String fd= dateFormat.format(d);
 			bwr.write(", "+t+"\nList last updated on "+fd);
@@ -67,32 +67,31 @@ public class StudentList {
 
 			} catch (Exception e){}
 							
-			System.out.println("Data Loaded.");	
+			System.out.println(Constants.s2);	
 		}
 
 		else if(args[0].contains("?")){
 
-			System.out.println("Loading data ...");	
+			System.out.println(Constants.s1);	
 		
 			try {
 			String students = s.readLine();
 			String student[] = students.split(",");	
-			boolean done = false;
 			String t = args[0].substring(1);
 
-			for(int idx = 0; idx<student.length && !done; idx++) {
+			for(int idx = 0; idx<student.length; idx++) {
 				if(student[idx].equals(t)) {
 					System.out.println("We found it!");
-						done=true;
+					break;
 				}
 			}
 			} catch (Exception e){} 
 
-			System.out.println("Data Loaded.");				
+			System.out.println(Constants.s2);				
 		}
 
 		else if(args[0].contains("c")){
-			System.out.println("Loading data ...");			
+			System.out.println(Constants.s1);			
 			try {
 			String D = s.readLine();
 			char a[] = D.toCharArray();			
@@ -102,13 +101,14 @@ public class StudentList {
 			for(char c:a) {
 				if(c ==' ') {
 					if (!in_word) {	count++; in_word =true;	}
-					else { in_word=false;}			
+					else { in_word=false;}
+					count++;			
 				}
 			}
 			System.out.println(count +" word(s) found " + a.length);
 			} catch (Exception e){} 
 
-			System.out.println("Data Loaded.");				
+			System.out.println(Constants.s2);				
 		}
 		else {
 				System.out.println("Invalid Argument");
