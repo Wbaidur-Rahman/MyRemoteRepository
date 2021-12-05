@@ -7,22 +7,27 @@ public class StudentList {
 	public static void main(String args[]) {
 
 		//Check arguments
+		BufferedReader s=null;
+		
+		try{
+			s = new BufferedReader(
+						new InputStreamReader(
+							new FileInputStream("students.txt"))); 
+		} catch (Exception e){}
+
 
 		if (args.length == 0) {
 			System.out.println("No Arguments.");
 		}
-
+			
 		else if(args[0].equals("a")) {
 
 			System.out.println("Loading data ...");	
 		
 			try {
-			BufferedReader s = new BufferedReader(
-						new InputStreamReader(
-							new FileInputStream("students.txt"))); 
 			String students = s.readLine();
 			String student[] = students.split(", ");			
-			for(String  studentsName : student[]) { System.out.println(studentsName); }
+			for(String  studentsName : student) { System.out.println(studentsName); }
 			} catch (Exception e){}
  
 			System.out.println("Data Loaded.");
@@ -33,10 +38,6 @@ public class StudentList {
 			System.out.println("Loading data ...");
 			
 			try {
-			BufferedReader s = new BufferedReader(
-						new InputStreamReader(
-							new FileInputStream("students.txt"))); 
-                        
 			String students = s.readLine();
 			String student[] = students.split(", ");	
 			Random x = new Random();
@@ -74,9 +75,6 @@ public class StudentList {
 			System.out.println("Loading data ...");	
 		
 			try {
-			BufferedReader s = new BufferedReader(
-						new InputStreamReader(
-							new FileInputStream("students.txt"))); 
 			String students = s.readLine();
 			String student[] = students.split(",");	
 			boolean done = false;
@@ -96,9 +94,6 @@ public class StudentList {
 		else if(args[0].contains("c")){
 			System.out.println("Loading data ...");			
 			try {
-			BufferedReader s = new BufferedReader(
-						new InputStreamReader(
-							new FileInputStream("students.txt"))); 
 			String D = s.readLine();
 			char a[] = D.toCharArray();			
 			boolean in_word = false;
