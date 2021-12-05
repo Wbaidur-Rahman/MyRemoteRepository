@@ -6,23 +6,17 @@ import java.util.*;
 public class StudentList {
 	public static void main(String args[]) {
 
-		//Check arguments
 		BufferedReader s=null;
-		
-		try{
-			s = new BufferedReader(
-						new InputStreamReader(
-							new FileInputStream(Constants.s3))); 
-		        
-		} catch (Exception e){}	
 		String students=null;
 		String student[]=null;
 		
 		try{
+		s = new BufferedReader(new InputStreamReader(new FileInputStream(Constants.s3))); 
 		students = s.readLine();
 		student= students.split(", ");
 		} catch (Exception e){}
-			
+		
+		//Check arguments	
 		if (args.length == 0) {
 			System.out.println(Constants.s4);
 		}
@@ -32,7 +26,8 @@ public class StudentList {
 			System.out.println(Constants.s1);	
 		
 			try {
-			for(String  studentsName : student) { System.out.println(studentsName); }
+			for(String  studentsName : student) 
+				{ System.out.println(studentsName); }
 			} catch (Exception e){}
  
 			System.out.println(Constants.s2);
@@ -99,22 +94,6 @@ public class StudentList {
 				int count=student.length;
 				System.out.println( count+" word(s) found " + a.length);
 			} catch (Exception e){} 
-		
-			/*try {
-			String D = s.readLine();
-			char a[] = D.toCharArray();			
-			boolean in_word = false;
-			int count=0;
-
-			for(char c:a) {
-				if(c ==' ') {
-					if (!in_word) {	count++; in_word =true;	}
-					else { in_word=false;}
-					count++;			
-				}
-			}
-			System.out.println(count +" word(s) found " + a.length);
-			} catch (Exception e){} */
 
 			System.out.println(Constants.s2);				
 		}
