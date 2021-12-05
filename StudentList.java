@@ -13,9 +13,16 @@ public class StudentList {
 			s = new BufferedReader(
 						new InputStreamReader(
 							new FileInputStream(Constants.s3))); 
+		        
+		} catch (Exception e){}	
+		String students=null;
+		String student[]=null;
+		
+		try{
+		students = s.readLine();
+		student= students.split(", ");
 		} catch (Exception e){}
-
-
+			
 		if (args.length == 0) {
 			System.out.println(Constants.s4);
 		}
@@ -25,8 +32,6 @@ public class StudentList {
 			System.out.println(Constants.s1);	
 		
 			try {
-			String students = s.readLine();
-			String student[] = students.split(", ");			
 			for(String  studentsName : student) { System.out.println(studentsName); }
 			} catch (Exception e){}
  
@@ -38,8 +43,6 @@ public class StudentList {
 			System.out.println(Constants.s1);
 			
 			try {
-			String students = s.readLine();
-			String student[] = students.split(", ");	
 			Random x = new Random();
 			int index = x.nextInt(4);
         
@@ -75,8 +78,6 @@ public class StudentList {
 			System.out.println(Constants.s1);	
 		
 			try {
-			String students = s.readLine();
-			String student[] = students.split(",");	
 			String t = args[0].substring(1);
 
 			for(int idx = 0; idx<student.length; idx++) {
@@ -91,8 +92,15 @@ public class StudentList {
 		}
 
 		else if(args[0].contains("c")){
-			System.out.println(Constants.s1);			
-			try {
+			System.out.println(Constants.s1);
+			
+			try{
+				char a[] = students.toCharArray();
+				int count=student.length;
+				System.out.println( count+" word(s) found " + a.length);
+			} catch (Exception e){} 
+		
+			/*try {
 			String D = s.readLine();
 			char a[] = D.toCharArray();			
 			boolean in_word = false;
@@ -106,7 +114,7 @@ public class StudentList {
 				}
 			}
 			System.out.println(count +" word(s) found " + a.length);
-			} catch (Exception e){} 
+			} catch (Exception e){} */
 
 			System.out.println(Constants.s2);				
 		}
