@@ -20,9 +20,9 @@ public class StudentList {
 			BufferedReader s = new BufferedReader(
 						new InputStreamReader(
 							new FileInputStream("students.txt"))); 
-			String r = s.readLine();
-			String i[] = r.split(", ");			
-			for(String j : i) { System.out.println(j); }
+			String students = s.readLine();
+			String student[] = students.split(", ");			
+			for(String  studentsName : student[]) { System.out.println(studentsName); }
 			} catch (Exception e){}
  
 			System.out.println("Data Loaded.");
@@ -37,12 +37,12 @@ public class StudentList {
 						new InputStreamReader(
 							new FileInputStream("students.txt"))); 
                         
-			String r = s.readLine();
-			String i[] = r.split(", ");	
+			String students = s.readLine();
+			String student[] = students.split(", ");	
 			Random x = new Random();
-			int y = x.nextInt(4);
+			int index = x.nextInt(4);
         
-			System.out.println(i[y]);
+			System.out.println(student[index]);
 			} catch (Exception e){} 
                         
 			System.out.println("Data Loaded.");			
@@ -53,7 +53,7 @@ public class StudentList {
 			System.out.println("Loading data ...");	
 		
 			try {
-			BufferedWriter s = new BufferedWriter(
+			BufferedWriter bwr = new BufferedWriter(
 					new FileWriter("students.txt", true));
 
 			String t = args[0].substring(1);
@@ -61,8 +61,8 @@ public class StudentList {
 	        	String df = "dd/mm/yyyy-hh:mm:ss a";
 	        	DateFormat dateFormat = new SimpleDateFormat(df);
 	        	String fd= dateFormat.format(d);
-			s.write(", "+t+"\nList last updated on "+fd);
-			s.close();
+			bwr.write(", "+t+"\nList last updated on "+fd);
+			bwr.close();
 
 			} catch (Exception e){}
 							
@@ -77,13 +77,13 @@ public class StudentList {
 			BufferedReader s = new BufferedReader(
 						new InputStreamReader(
 							new FileInputStream("students.txt"))); 
-			String r = s.readLine();
-			String i[] = r.split(",");	
+			String students = s.readLine();
+			String student[] = students.split(",");	
 			boolean done = false;
 			String t = args[0].substring(1);
 
-			for(int idx = 0; idx<i.length && !done; idx++) {
-				if(i[idx].equals(t)) {
+			for(int idx = 0; idx<student.length && !done; idx++) {
+				if(student[idx].equals(t)) {
 					System.out.println("We found it!");
 						done=true;
 				}
